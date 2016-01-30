@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<script src="js/jQuery.js"></script>
+<script>
+window.onload=function(){
+    var cx=$(".box").offset().left+$(".box").width()/2;
+    var cy=$(".box").offset().top+$(".box").height()/2;
+    $(document).mousemove(function(e){
+        var px= e.pageX-cx;
+        var py= e.pageY-cy;
+        var pz=0;
+        var m=Math.sqrt(px*px+py*py+pz*pz);
+        var mx=px/m;
+        var my=py/m;
+        var mz=pz/m;
+        $(".box").css({
+            transform:"rotate3d("+mx+","+my+","+mz+","+m+"deg)"
+        });
+    });
+}
+
+
+</script>
+<style>
+    body{
+        margin:0;
+        padding:0;
+    }
+    .sence{
+        width:400px;
+        height:400px;
+        padding:200px;
+        margin:0 auto;
+        perspective:2000px;
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        margin:0 auto;
+
+
+    }
+    .box{
+        width:400px;
+        height:400px;
+        position: relative;
+        transform-style: preserve-3d;
+    }
+    .box div{
+        width:400px;
+        height:400px;
+        text-align: center;
+        line-height: 400px;
+        position: absolute;
+        left:0;
+        top:0;
+
+    }
+    .box div:nth-child(1){
+        /*background:red;*/
+        transform: rotateX(90deg);
+        transform-origin: top;
+        background: url("./img/1.png") center center;
+        background-size: cover;
+
+    }
+    .box div:nth-child(2){
+        /*background:green;*/
+        transform: rotateY(-90deg);
+        transform-origin:left;
+        background: url("./img/2.png") center center;
+        background-size: cover;
+
+    }
+    .box div:nth-child(3){
+        /*background:pink;*/
+        transform: rotateY(-180deg);
+        background: url("./img/3.png") center center;
+        background-size: cover;
+
+    }
+    .box div:nth-child(4){
+        /*background:blue;*/
+        transform: rotateY(90deg);
+        transform-origin:right;
+        background: url("./img/4.png") center center;
+        background-size: cover;
+
+    }
+    .box div:nth-child(5){
+        transform: rotateX(-90deg);
+        transform-origin:bottom;
+        /*background:#ccc;*/
+
+
+        background: url("./img/5.png") center center;
+        background-size: cover;
+
+    }
+    .box div:nth-child(6){
+        transform:translateZ(400px);
+        /*background:yellow;*/
+        background: url("./img/7.png") center center;
+        background-size: cover;
+
+    }
+</style>
+<body>
+<iframe src="3dflower.html"  height="1000px" width="100%">
+
+</iframe>
+<div class="sence">
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+</body>
+</html>
